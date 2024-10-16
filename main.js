@@ -31,6 +31,9 @@ function createWindow() {
 
   // 2.启用remote模块
   remote.enable(mainWin.webContents);
+
+  // 自定义顶部菜单
+  require('./ipcMain/menu');
 }
 
 // 当app准备好后，执⾏createWindow创建窗⼝
