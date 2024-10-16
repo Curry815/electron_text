@@ -1,0 +1,16 @@
+{
+  "name": "electron_text",
+  "version": "1.0.0",
+  "description": "this is a electron demo",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/Curry815/electron_text.git",
+  "author": "curry_815 <1274750944@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "nodemon": "^3.1.7"
+  }
+}
