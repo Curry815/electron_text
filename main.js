@@ -13,7 +13,7 @@ function createWindow() {
     width: 800, // 窗⼝宽度
     height: 600, // 窗⼝⾼度
     webPreferences: {
-      sandbox: false, // 禁⽤沙箱模式，默认为true，如果想要预加载脚本，需要设置为false
+      // sandbox: false, // 禁⽤沙箱模式，默认为true，如果想要预加载脚本，需要设置为false
       // preload: path.join(__dirname, 'renderer/preload.js'), // 预加载脚本
       nodeIntegration: true, // 允许渲染进程访问Nodejs API
       contextIsolation: false // 允许渲染进程访问Nodejs API
@@ -23,13 +23,13 @@ function createWindow() {
   // 加载本地目录的index.html文件
   mainWin.loadFile(path.join(__dirname, 'index.html'));
 
-  fs.readFile('package.json', (err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-    }        
-    console.log(data.toString()); // 打印文件内容
-  });
+  // fs.readFile('package.json', (err, data) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   }        
+  //   console.log(data.toString()); // 打印文件内容
+  // });
 
   mainWin.webContents.openDevTools(); // 打开开发者工具
 

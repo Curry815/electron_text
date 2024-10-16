@@ -6,4 +6,6 @@ h1 {
   width: 400px;
   height: 400px;
   border: 1px solid black;
+  background: pink;
+  overflow-y: auto;
 }
