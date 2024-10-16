@@ -4,8 +4,9 @@
 */
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const fs = require('fs');
-
+// 1.引入初始化remote模块
+const remote = require('@electron/remote/main');
+remote.initialize();
 
 // ⽤于创建窗⼝
 function createWindow() {
@@ -22,19 +23,14 @@ function createWindow() {
 
   // 加载本地目录的index.html文件
   mainWin.loadFile(path.join(__dirname, 'index.html'));
-
-  // fs.readFile('package.json', (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return;
-  //   }        
-  //   console.log(data.toString()); // 打印文件内容
-  // });
-
-  mainWin.webContents.openDevTools(); // 打开开发者工具
-
   // 加载⼀个远程⻚⾯
   // mainWin.loadURL('http://www.baidu.com');
+
+  // 打开开发者工具
+  mainWin.webContents.openDevTools(); 
+
+  // 2.启用remote模块
+  remote.enable(mainWin.webContents);
 }
 
 // 当app准备好后，执⾏createWindow创建窗⼝
