@@ -4,23 +4,37 @@
 */
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const fs = require('fs');
+
 
 // ⽤于创建窗⼝
 function createWindow() {
   const mainWin = new BrowserWindow({
     width: 800, // 窗⼝宽度
     height: 600, // 窗⼝⾼度
-    autoHideMenuBar: true, // ⾃动隐藏菜单栏
-    alwaysOnTop: true, // 置顶
-    x: 0, // 窗⼝位置x坐标
-    y: 0 // 窗⼝位置y坐标
-  })
+    webPreferences: {
+      sandbox: false, // 禁⽤沙箱模式，默认为true，如果想要预加载脚本，需要设置为false
+      // preload: path.join(__dirname, 'renderer/preload.js'), // 预加载脚本
+      nodeIntegration: true, // 允许渲染进程访问Nodejs API
+      contextIsolation: false // 允许渲染进程访问Nodejs API
+    }
+  });
 
   // 加载本地目录的index.html文件
-  mainWin.loadFile(path.join(__dirname, 'index.html'))
+  mainWin.loadFile(path.join(__dirname, 'index.html'));
+
+  fs.readFile('package.json', (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }        
+    console.log(data.toString()); // 打印文件内容
+  });
+
+  mainWin.webContents.openDevTools(); // 打开开发者工具
 
   // 加载⼀个远程⻚⾯
-  // mainWin.loadURL('http://www.baidu.com')
+  // mainWin.loadURL('http://www.baidu.com');
 }
 
 // 当app准备好后，执⾏createWindow创建窗⼝
