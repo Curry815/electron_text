@@ -33,7 +33,9 @@ function createWindow() {
   remote.enable(mainWin.webContents);
 
   // 自定义顶部菜单
+  require('./ipcMain/ipcMain');
   require('./ipcMain/menu');
+  require('./ipcMain/contextMain');
 }
 
 // 当app准备好后，执⾏createWindow创建窗⼝

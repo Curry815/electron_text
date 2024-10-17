@@ -27,10 +27,19 @@
     <button id="btn">打开一个新窗口</button>
     <script src="renderer/index.js"></script> -->
 
-    <h2>Electron自定义顶部菜单右键菜单</h2>
+    <!-- <h2>Electron自定义顶部菜单右键菜单</h2>
     <input type="text">
     <br>
     <p>Electron自定义顶部菜单右键菜单</p>
-    <script src="ipcRenderer/index.js"></script>
+    <script src="ipcRenderer/index.js"></script> -->
+
+    <h2>Electron主进程与渲染进程的通信</h2>
+    <br>
+    <button id="sendMsg">渲染进程执行主进程里面的方法（异步）</button>
+    <br>
+    <button id="sendMsgReplay">渲染进程执行主进程里面的方法，主进程给渲染进程反馈处理结果（异步）</button>
+    <br>
+    <button id="sendMsgSync">渲染进程和主进程通信（同步）</button>
+    <script src="./ipcRenderer/ipcRenderer.js"></script>
   </body>
 </html>

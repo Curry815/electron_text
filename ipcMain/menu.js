@@ -1,10 +1,17 @@
-const { Menu } = require('electron');
+const { Menu, BrowserWindow } = require('electron');
 
 // 创建菜单模板
 var menuTemplate = [
   {
     label: '文件',
     submenu: [
+      {
+        label: '触发渲染进程里面的方法',
+        click: () => {
+          // 主进程主动给渲染进程发送消息
+          BrowserWindow.getFocusedWindow().webContents.send('rendererMsg', '触发渲染进程里面的方法 - 我是主进程');
+        }
+      },
       {
         label: '新建',
         accelerator: 'ctrl+n', // 快捷键
